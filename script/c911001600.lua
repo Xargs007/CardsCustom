@@ -4,7 +4,7 @@ function c911001600.initial_effect(c)
 	c:EnableReviveLimit()
 	--aux.AddFusionProcCode2(c,97023549,11460577,false,false)
 	--aux.AddFusionProcCodeFun(c,611001599,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),1,true,true)
-	Fusion.AddProcMix(c,true,true,611001599,aux.FilterBoolFunctionEx(Card.IsRace,RACE_WARRIOR))
+	Fusion.AddProcMix(c,true,true,(611001599+97023549+493757190),aux.FilterBoolFunctionEx(Card.IsRace,RACE_WARRIOR))
 	--indes
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
