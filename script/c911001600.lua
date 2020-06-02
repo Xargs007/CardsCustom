@@ -3,7 +3,8 @@ function c911001600.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	--aux.AddFusionProcCode2(c,97023549,11460577,false,false)
-	aux.AddFusionProcCodeFun(c,611001599,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),1,true,true)
+	--aux.AddFusionProcCodeFun(c,611001599,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),1,true,true)
+	Fusion.AddProcMix(c,true,true,611001599,aux.FilterBoolFunctionEx(Card.IsRace,RACE_WARRIOR))
 	--indes
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -41,10 +42,10 @@ function c911001600.indcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>0
 end
 function c911001600.atkcon(e)
-	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>1
+	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>=2
 end
 function c911001600.discon(e)
-	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>3
+	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_MZONE)>=3
 end
 function c911001600.atkval(e,c)
 	return c:GetAttack()*2
