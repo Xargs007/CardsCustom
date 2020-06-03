@@ -1,6 +1,6 @@
 --沈黙の邪悪霊
 function c903599951.initial_effect(c)
-	--Activate
+--[[	--Activate
 	--local e1=Effect.CreateEffect(c)
 	--e1:SetType(EFFECT_TYPE_ACTIVATE)
 	--e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -21,8 +21,22 @@ function c903599951.initial_effect(c)
 	e2:SetTarget(c903599951.target)
 	e2:SetOperation(c903599951.activate)
 	c:RegisterEffect(e2)
+]]
+	--effect
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(90901451,0))
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e2:SetCode(EVENT_BE_BATTLE_TARGET)
+	---e2:SetCountLimit(1)
+	e2:SetRange(LOCATION_MZONE)
+	--e2:SetCondition(c90901451.condition)
+	e2:SetCondition(c90901451.con)
+	e2:SetTarget(c90901451.target)
+	e2:SetOperation(c90901451.activate)
+	c:RegisterEffect(e2)
 end
-function c903599951.sfilter1(c)
+--[[function c903599951.sfilter1(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsFaceup()--c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_FAIRY) and c:IsFaceup()
 end
 function c903599951.cbcon(e,tp,eg,ep,ev,re,r,rp)
@@ -53,6 +67,36 @@ function c903599951.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and (tc:IsFaceup() or tc:IsFacedown()) then
 		if tc:IsDefencePos() then
 			Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
+		end
+		--Duel.ChangeAttacker(tc)
+		Duel.ChangeAttackTarget(tc)
+	end
+end
+]]
+
+function c903599951.filter(c)
+	return (c:IsFaceup() or c:IsFacedown())
+end
+
+function c903599951.con(e,tp,eg,ep,ev,re,r,rp)
+	local d=Duel.GetAttackTarget()
+	return d and d:IsControler(tp) --and d:IsFaceup()
+end
+function c903599951.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return false end
+	local a=Duel.GetAttacker()
+	if chk==0 then return a and a:IsCanBeEffectTarget(e) and Duel.IsExistingTarget(c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,a) end--Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,a) end
+	Duel.SetTargetCard(a)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	local g=Duel.SelectTarget(tp,c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,a)
+	e:SetLabelObject(g:GetFirst())
+end
+function c903599951.activate(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:IsRelateToEffect(e) and (tc:IsFaceup() or tc:IsFacedown()) then
+		if tc:IsDefense() then
+			Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
+			Duel.ChangeAttackTarget(tc)
 		end
 		--Duel.ChangeAttacker(tc)
 		Duel.ChangeAttackTarget(tc)
