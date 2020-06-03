@@ -117,13 +117,15 @@ function c903599951.filter(c)
 	return (c:IsFaceup() or c:IsFacedown())
 end
 function c903599951.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local a=Duel.GetAttackTarget()
-	if chk==0 then return  a and Duel.IsExistingMatchingCard(c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,a) end
+	local a=Duel.GetAttacker()
+	if chk==0 then return  a and Duel.IsExistingMatchingCard(c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 end
 function c903599951.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.SelectMatchingCard(tp,c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,a)
+	local g=Duel.SelectMatchingCard(tp,c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	local tc=g:GetFirst()
-	if tc then
+	local a=Duel.GetAttacker()
+	if tc and a and a:IsAttackable() and a:IsFaceup() and not a:IsImmuneToEffect(e) and not a:IsStatus(STATUS_ATTACK_CANCELED) then
+		Duel.BreakEffect()
 		Duel.HintSelection(g)
 		Duel.ChangeAttackTarget(tc)
 	end
