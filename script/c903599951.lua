@@ -126,7 +126,7 @@ function c903599951.activate(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	if tc and a and a:IsFaceup() and not a:IsImmuneToEffect(e) and not a:IsStatus(STATUS_ATTACK_CANCELED) then
 		Duel.BreakEffect()
-		Duel.HintSelection(tc)
+		--Duel.HintSelection(tc)
 		Duel.ChangeAttackTarget(tc)
 	end
 end
