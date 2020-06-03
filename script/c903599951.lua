@@ -134,15 +134,15 @@ end
 function c903599951.condition(e,tp,eg,ep,ev,re,r,rp)
 	return r~=REASON_REPLACE and Duel.GetAttackTarget()==e:GetHandler() and Duel.GetAttacker():IsControler(1-tp)
 end
-function c903599951.filter2(c,at)
+function c903599951.filter3(c,at)
 	return at:IsContains(c)
 end
 function c903599951.target3(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttacker():GetAttackableTarget()
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and at:IsContains(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c903599951.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler(),at) end
+	if chk==0 then return Duel.IsExistingTarget(c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,at) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c903599951.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler(),at)
+	Duel.SelectTarget(tp,c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,at)	
 end
 function c903599951.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
