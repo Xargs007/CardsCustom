@@ -117,7 +117,7 @@ function c903599951.filter(c)
 	return (c:IsFaceup() or c:IsFacedown())
 end
 function c903599951.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local a=Duel.GetAttacker()
+	local a=Duel.GetAttackTarget()
 	if chk==0 then return  a and Duel.IsExistingMatchingCard(c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,a) end
 end
 function c903599951.activate(e,tp,eg,ep,ev,re,r,rp)
