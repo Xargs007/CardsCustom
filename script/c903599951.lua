@@ -124,7 +124,7 @@ function c903599951.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c903599951.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	local tc=g:GetFirst()
 	local a=Duel.GetAttacker()
-	if tc and a and a:IsAttackable() and a:IsFaceup() and not a:IsImmuneToEffect(e) and not a:IsStatus(STATUS_ATTACK_CANCELED) then
+	if tc and a and a:IsFaceup() and not a:IsImmuneToEffect(e) and not a:IsStatus(STATUS_ATTACK_CANCELED) then
 		Duel.BreakEffect()
 		Duel.HintSelection(g)
 		Duel.ChangeAttackTarget(tc)
