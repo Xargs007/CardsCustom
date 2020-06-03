@@ -80,7 +80,7 @@ end
 
 function c903599951.con(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
-	return d and d:IsControler(tp) --and d:IsFaceup()
+	return d and d:IsControler(tp) and (d:IsFaceup() or d:IsFacedown())
 end
 function c903599951.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
