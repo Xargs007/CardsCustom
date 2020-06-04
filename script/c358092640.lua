@@ -2,7 +2,8 @@
 function c358092640.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCode2(c,58932617,95362816,true,true)
+	--aux.AddFusionProcCode2(c,58932617,95362816,true,true)
+	Fusion.AddProcMix(c,true,true,58932617,95362816)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -38,6 +39,7 @@ function c358092640.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
 end
 c358092640.dark_calling=true
+c358092640.material_setcode={0x8,0x3008}
 function c358092640.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return ep~=tp and Duel.GetAttackTarget()==nil

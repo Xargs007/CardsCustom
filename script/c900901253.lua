@@ -4,7 +4,8 @@
 function c900901253.initial_effect(c)
 	--xyz summon
 	--aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),7,2)
-	aux.AddFusionProcCodeFun(c,(46986414),aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,false,false)
+	--aux.AddFusionProcCodeFun(c,(46986414),aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,false,false)
+	Fusion.AddProcMixN(c,false,false,CARD_DARK_MAGICIAN,1,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -59,6 +60,7 @@ function c900901253.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 --
+c900901253.listed_names={CARD_DARK_MAGICIAN,CARD_DARK_MAGICIAN_GIRL}
 function c900901253.spfilter1(c,tp)
 	return c:IsFusionCode(46986414) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
 		and Duel.IsExistingMatchingCard(c900901253.spfilter2,tp,LOCATION_MZONE,0,1,c)

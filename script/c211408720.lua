@@ -4,7 +4,8 @@
 function c211408720.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,74677422,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),1,true)
+	--aux.AddFusionProcCodeFun(c,74677422,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),1,true)
+	Fusion.AddProcMixN(c,false,false,74677422,1,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),1)
 	--Equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(211408720,0))

@@ -2,7 +2,9 @@
 function c919981190.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCode3(c,62651957,65622692,64500000,true,true)
+	--aux.AddFusionProcCode3(c,62651957,65622692,64500000,true,true)
+	Fusion.AddProcMix(c,true,true,62651957,65622692,64500000)
+	Fusion.AddContactProc(c,c919981190.contactfil,c919981190.contactop,c919981190.splimit)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -43,6 +45,13 @@ function c919981190.initial_effect(c)
 	e4:SetTarget(c919981190.target)
 	e4:SetOperation(c919981190.operation)
 	c:RegisterEffect(e4)
+end
+function c919981190.contactfil(tp)
+	return Duel.GetMatchingGroup(Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,nil)--Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_ONFIELD,0,nil)
+end
+function c919981190.contactop(g)
+	--Duel.Remove(g,POS_FACEUP,REASON_COST+REASON_MATERIAL)
+	Duel.SendtoGrave(g,POS_FACEUP,REASON_COST+REASON_MATERIAL)
 end
 function c919981190.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA+LOCATION_GRAVE)

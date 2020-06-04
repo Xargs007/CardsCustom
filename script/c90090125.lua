@@ -2,10 +2,11 @@
 function c90090125.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,38033121,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,false,false)
+	--aux.AddFusionProcCodeFun(c,38033121,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,false,false)
 	--aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x20a2),3,true)
 	--aux.AddFusionProcCodeFun(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x30a2),aux.FilterBoolFunction(Card.IsFusionSetCard,0x20a2),2,false,false)
 	--aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(c90090125.filmatfus),2,true)
+	Fusion.AddProcMix(c,false,false,CARD_DARK_MAGICIAN_GIRL,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

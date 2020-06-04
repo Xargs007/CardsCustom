@@ -3,14 +3,15 @@ function c900901254.initial_effect(c)
 	--xyz summon
 	--aux.AddXyzProcedure(c,nil,7,2,c96471335.ovfilter,aux.Stringid(96471335,0))
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,(46986414),aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,false,false)
+	--aux.AddFusionProcCodeFun(c,(46986414),aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,false,false)
+	Fusion.AddProcMixN(c,false,false,CARD_DARK_MAGICIAN,1,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1)
 	--spsummon fusion condition
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(aux.fuslimit)
-	c:RegisterEffect(e1)
+	--local e1=Effect.CreateEffect(c)
+	--e1:SetType(EFFECT_TYPE_SINGLE)
+	--e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	--e1:SetCode(EFFECT_SPSUMMON_CONDITION)
+	--e1:SetValue(aux.fuslimit)
+	--c:RegisterEffect(e1)
 	--special summon rule
 	--local e02=Effect.CreateEffect(c)
 	--e02:SetType(EFFECT_TYPE_FIELD)
@@ -46,6 +47,7 @@ function c900901254.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 --
+c900901254.listed_names={CARD_DARK_MAGICIAN,CARD_DARK_MAGICIAN_GIRL}
 function c900901254.spfilter1(c,tp)
 	return c:IsFusionCode(46986414) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
 		and Duel.IsExistingMatchingCard(c900901254.spfilter2,tp,LOCATION_MZONE,0,1,c)

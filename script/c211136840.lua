@@ -1,9 +1,11 @@
 --覇魔導士アーカナイト・マジシャン
 function c211136840.initial_effect(c)
-	c:EnableCounterPermit(0x1)
+	--c:EnableCounterPermit(0x1)
+	c:EnableCounterPermit(COUNTER_SPELL)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,c211136840.ffilter,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),true)
+	--aux.AddFusionProcFun2(c,c211136840.ffilter,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),true)
+	Fusion.AddProcMix(c,true,true,c211136840.ffilter,aux.FilterBoolFunctionEx(Card.IsRace,RACE_SPELLCASTER))
 	--attackup
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
