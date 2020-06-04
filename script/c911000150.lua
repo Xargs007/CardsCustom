@@ -1,6 +1,7 @@
 --Kuribabylon
 function c911000150.initial_effect(c)
 c:EnableReviveLimit()
+aux.AddFusionProcCode2(c,511000151,511000151,511000152,511000153,40640057,true,true)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -21,12 +22,13 @@ c:EnableReviveLimit()
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(911000150,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
+	--e3:SetCountLimit(1,911000150)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c911000150.condition)	
 	e3:SetCost(c911000150.spcost)
-	e3:SetTarget(c911000150.sptg)
-	e3:SetOperation(c911000150.spop)
+	e3:SetTarget(c911000150.tg1)
+	e3:SetOperation(c911000150.op)
 	c:RegisterEffect(e3)
 end
 c911000150.material_count=5
@@ -56,7 +58,8 @@ function c911000150.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g4=Duel.SelectMatchingCard(tp,c911000150.sprfilter,tp,LOCATION_ONFIELD,0,1,1,nil,511000154)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g5=Duel.SelectMatchingCard(tp,c911000150.sprfilter,tp,LOCATION_ONFIELD,0,1,1,nil,40640057)	
+	local g5=Duel.SelectMatchingCard(tp,c911000150.sprfilter,tp,LOCATION_ONFIELD,0,1,1,nil,40640057)
+	
 	g1:Merge(g2)
 	g1:Merge(g3)
 	g1:Merge(g4)
@@ -66,7 +69,7 @@ function c911000150.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 		if not tc:IsFaceup() then Duel.ConfirmCards(1-tp,tc) end
 		tc=g1:GetNext()
 	end
-	Duel.Release(g1,nil,5,REASON_COST)	
+	Duel.Release(g1,nil,5,REASON_COST)
 end
 
 function c911000150.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -90,6 +93,7 @@ function c911000150.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(911000150,0))
+		e1:SetCode(EFFECT_CANNOT_SUMMON)
 		e1:SetType(EFFECT_TYPE_QUICK_O)
 		e1:SetCode(EVENT_BE_BATTLE_TARGET)
 		e1:SetRange(LOCATION_MZONE)
@@ -109,6 +113,7 @@ function c911000150.spop(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,511000152)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		local e2=Effect.CreateEffect(e:GetHandler())
+		e2:SetCode(EFFECT_CANNOT_SUMMON)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_UNRELEASEABLE_SUM)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -121,6 +126,7 @@ function c911000150.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		local e4=Effect.CreateEffect(e:GetHandler())
 		e4:SetDescription(aux.Stringid(911000150,0))
+		e4:SetCode(EFFECT_CANNOT_SUMMON)
 		e4:SetCategory(CATEGORY_ATKCHANGE)
 		e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e4:SetType(EFFECT_TYPE_IGNITION)
@@ -141,6 +147,7 @@ function c911000150.spop(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,511000153)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		local e3=Effect.CreateEffect(e:GetHandler())
+		e3:SetCode(EFFECT_CANNOT_SUMMON)
 		e3:SetDescription(aux.Stringid(911000150,0))
 		e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
@@ -189,7 +196,7 @@ function c911000150.noperation(e,tp,eg,ep,ev,re,r,rp)
 end
 
 function c911000150.spfilter(c,e,tp)
-	return c:IsCode(40640057) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return (c:IsCode(40640057 or c:IsCode(511000151) or c:IsCode(511000152) or c:IsCode(511000153) or c:IsCode(511000154))) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 
 function c911000150.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -204,5 +211,32 @@ function c911000150.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)
 		tc:CompleteProcedure()
+	end
+end
+---
+function c911000150.spfilter1(c,e,tp)
+	return (c:IsCode(511000151) or c:IsCode(511000152) or c:IsCode(511000153) or c:IsCode(511000154) or c:IsCode(40640057)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+end
+
+function c911000150.tg1(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 
+		and Duel.IsExistingMatchingCard(c911000150.spfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
+end
+function c911000150.op(e,tp,eg,ep,ev,re,r,rp)
+	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft1<=0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,c911000150.spfilter1,tp,LOCATION_GRAVE,0,ft1,ft1,nil,e,tp)
+	if g:GetCount()>0 then
+		local fid=e:GetHandler():GetFieldID()
+		local tc=g:GetFirst()
+		while tc do
+			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
+			tc:RegisterFlagEffect(911000148,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,fid)
+			tc=g:GetNext()
+		end
+		Duel.SpecialSummonComplete()
+		g:KeepAlive()
 	end
 end
