@@ -46,7 +46,7 @@ function c90901351.initial_effect(c)
 end
 
 function c90901351.filmatfus(c)
-	return c:IsFusionSetCard(0x30a2) or c:IsFusionSetCard(0x20a2)
+	return c:IsSetCard(0x30a2) or c:IsSetCard(0x20a2)
 end
 function c90901351.val(e,c)
 	return Duel.GetMatchingGroupCount(c90901351.filter,c:GetControler(),LOCATION_GRAVE,LOCATION_GRAVE,nil)*100
