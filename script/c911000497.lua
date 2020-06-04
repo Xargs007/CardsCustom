@@ -6,12 +6,12 @@ function c911000497.initial_effect(c)
 	--aux.AddFusionProcCode2(c,89943723,78371393,true,true)
 	Fusion.AddProcMix(c,true,true,CARD_NEOS,aux.FilterBoolFunction(function(c) return c:IsYubel(true) end))
 	--spsummon condition
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c911000497.splimit)
-	c:RegisterEffect(e1)
+	--local e1=Effect.CreateEffect(c)
+	--e1:SetType(EFFECT_TYPE_SINGLE)
+	--e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	--e1:SetCode(EFFECT_SPSUMMON_CONDITION)
+	--e1:SetValue(c911000497.splimit)
+	--c:RegisterEffect(e1)
 	--damage&recover
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(911000497,0))
@@ -48,7 +48,7 @@ function c911000497.initial_effect(c)
 	e6:SetValue(0x3008)
 	c:RegisterEffect(e6)
 end
-c911000497.listed_names={CARD_NEOS,78371393}
+c911000497.listed_names={CARD_NEOS,78371393,783713930}
 c911000497.material_setcode={0x8,0x3008,0x9,0x561}
 function c911000497.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
