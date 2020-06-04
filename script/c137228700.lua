@@ -1,4 +1,4 @@
---黒炎の騎士－ブラック・フレア・ナイト－
+--黒炎の騎士－ブラック・フレア・ナイト－ CARD_DARK_MAGICIAN
 function c137228700.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
