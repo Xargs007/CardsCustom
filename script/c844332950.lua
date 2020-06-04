@@ -6,7 +6,8 @@ function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	--aux.AddFusionProcFunRep(c,aux.FilterBoolFunctionEx(Card.IsRace,RACE_SPELLCASTER),5,true)
-	aux.AddFusionProcCodeFun(c,46986414,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),4,false,false)
+	--aux.AddFusionProcCodeFun(c,46986414,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),4,false,false)
+	Fusion.AddProcMixN(c,false,false,CARD_DARK_MAGICIAN,1,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),4)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
