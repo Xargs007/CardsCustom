@@ -48,8 +48,8 @@ function c911000497.initial_effect(c)
 	e6:SetValue(0x3008)
 	c:RegisterEffect(e6)
 end
-s.listed_names={CARD_NEOS,78371393}
-s.material_setcode={0x8,0x3008,0x9,0x561}
+c911000497.listed_names={CARD_NEOS,78371393,783713930}
+c911000497.material_setcode={0x8,0x3008,0x9,0x561}
 function c911000497.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
