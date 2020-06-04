@@ -3,7 +3,7 @@ function c137228700.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	--aux.AddFusionProcCode2(c,46986414,(45231177 or 511001128),true,true)
-	Fusion.AddProcMix(c,true,true,CARD_DARK_MAGICIAN,(45231177 or 511001128))
+	Fusion.AddProcMix(c,true,true,CARD_DARK_MAGICIAN,(45231177 or 511001128 or 33460845))
 	--Special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(137228700,0))
