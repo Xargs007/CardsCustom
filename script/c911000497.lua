@@ -3,7 +3,8 @@ function c911000497.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	--aux.AddFusionProcCodeFun(c,89943723,c911000497.fusfilter,1,false,false)
-	aux.AddFusionProcCode2(c,89943723,78371393,true,true)
+	--aux.AddFusionProcCode2(c,89943723,78371393,true,true)
+	Fusion.AddProcMix(c,true,true,CARD_NEOS,aux.FilterBoolFunction(function(c) return c:IsYubel(true) end))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -47,6 +48,8 @@ function c911000497.initial_effect(c)
 	e6:SetValue(0x3008)
 	c:RegisterEffect(e6)
 end
+s.listed_names={CARD_NEOS,78371393}
+s.material_setcode={0x8,0x3008,0x9,0x561}
 function c911000497.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
