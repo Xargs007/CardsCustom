@@ -3,7 +3,8 @@ function c16393850.initial_effect(c)
 	--xyz summon
 	--aux.AddXyzProcedure(c,nil,8,2)
 	--aux.AddFusionProcFun2(c,c16393850.mfilter1,c16393850.mfilter2,true)
-	aux.AddFusionProcFun2(c,c16393850.mfilter1,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),true)
+	--aux.AddFusionProcFun2(c,c16393850.mfilter1,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),true)
+	Fusion.AddProcMixN(c,true,true,c16393850.mfilter1,1,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)
