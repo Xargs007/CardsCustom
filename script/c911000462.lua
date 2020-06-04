@@ -2,8 +2,10 @@
 --Valkyrion the Magna Warrior (Anime)
 --updated by Larry126
 function c911000462.initial_effect(c)
-	aux.AddFusionProcMix(c,true,true,99785935,39256679,11549357)
-	aux.AddContactFusion(c,c911000462.contactfilter,c911000462.contactop,c911000462.splimit,nil,SUMMON_TYPE_FUSION)
+	--aux.AddFusionProcMix(c,true,true,99785935,39256679,11549357)
+	--aux.AddContactFusion(c,c911000462.contactfilter,c911000462.contactop,c911000462.splimit,nil,SUMMON_TYPE_FUSION)
+	Fusion.AddProcMix(c,true,true,99785935,39256679,11549357)
+	Fusion.AddContactProc(c,c911000462.contactfilter,c911000462.contactop,c911000462.splimit,nil,SUMMON_TYPE_FUSION)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75347539,0))
@@ -17,6 +19,8 @@ function c911000462.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c911000462.material_setcode={0x66,0x2066}
+c911000462.listed_series={0x66,0x2066}
+c911000462.listed_names={99785935,39256679,11549357}
 function c911000462.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
