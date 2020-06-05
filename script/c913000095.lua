@@ -38,7 +38,7 @@ end
 function s.contactop(g,tp)
 	Duel.ConfirmCards(1-tp,g)
 	--Duel.SendtoDeck(g,nil,1,REASON_COST+REASON_MATERIAL)
-	SendtoDeck(g,nil,2,REASON_COST+REASON_MATERIAL)
+	Duel.SendtoDeck(g,nil,2,REASON_COST+REASON_MATERIAL)
 end
 function s.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
