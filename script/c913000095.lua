@@ -32,7 +32,7 @@ function s.initial_effect(c)
 end
 s.listed_names={CARD_DARK_MAGICIAN}
 function s.ffilter(c,fc,sumtype,tp)
-	return c:IsRace(RACE_WARRIOR,fc,sumtype,tp) and c:GetLevel()>=5
+	return c:IsRace(RACE_SPELLCASTER,fc,sumtype,tp) and c:GetLevel()>=6
 end
 function s.rfilter(c,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsLevelAbove(6) and (c:IsControler(tp) or c:IsFaceup())
