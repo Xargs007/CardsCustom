@@ -5,6 +5,7 @@ function s.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
 	Fusion.AddProcMix(c,true,true,CARD_DARK_MAGICIAN,s.ffilter)
+	Fusion.AddContactProc(c,s.contactfil,s.contactop,s.splimit)
 	--negate
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(88619463,0))
@@ -31,6 +32,17 @@ function s.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 s.listed_names={CARD_DARK_MAGICIAN}
+function s.contactfil(tp)
+	return Duel.GetMatchingGroup(Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,nil)
+end
+function s.contactop(g,tp)
+	Duel.ConfirmCards(1-tp,g)
+	Duel.SendtoDeck(g,nil,1,REASON_COST+REASON_MATERIAL)
+end
+function s.splimit(e,se,sp,st)
+	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
+end
+
 function s.ffilter(c,fc,sumtype,tp)
 	return c:IsRace(RACE_SPELLCASTER,fc,sumtype,tp) and c:GetLevel()>=6
 end
