@@ -42,12 +42,24 @@ end
 function c107551530.costfilter(c,ec)
 	return c:IsFaceup() and c:GetEquipTarget()==ec and c:IsAbleToGraveAsCost()
 end
+--function c107551530.descost(e,tp,eg,ep,ev,re,r,rp,chk)
+--	if chk==0 then return Duel.IsExistingMatchingCard(c107551530.costfilter,tp,LOCATION_SZONE,0,1,nil,e:GetHandler()) end
+--	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+--	local g=Duel.SelectMatchingCard(tp,c107551530.costfilter,tp,LOCATION_SZONE,0,1,1,nil,e:GetHandler())
+--	Duel.SendtoGrave(g,REASON_COST)
+--end
+--Nueva funcion cost
+--------------------------------------------------------------------------------------------------------
+function c107551530.eqfilter(c)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost()--c:IsCode(55569674) and c:IsDestructable()--(c:IsCode(55569674) or c:IsCode(95515060) or c:IsCode(58427465) or c:IsCode(95638658) or c:IsCode(69243953) or c:IsCode(32022366) or c:IsCode(21900719)) and c:IsDestructable()
+end
 function c107551530.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c107551530.costfilter,tp,LOCATION_SZONE,0,1,nil,e:GetHandler()) end
+	if chk==0 then return e:GetHandler():GetEquipGroup():IsExists(c107551530.eqfilter,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c107551530.costfilter,tp,LOCATION_SZONE,0,1,1,nil,e:GetHandler())
+	local g=e:GetHandler():GetEquipGroup():FilterSelect(tp,c107551530.eqfilter,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)
 end
+-------------------------------------------------------------------------------------------------------
 function c107551530.desfilter(c)
 	return c:IsDestructable()
 end
