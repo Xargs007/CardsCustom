@@ -930,7 +930,8 @@ end
 function s.gorgonimmunefilter(e,te)
 	return te:GetHandler():IsCode(43426903)
 end
-function s.harpiefilter(c)
+function s.harpiefilter(e)
+	local c=e:GetHandler()
 	return c:IsFaceup() and c:IsCode(54415063)
 end
 function s.harpiecon(e)
