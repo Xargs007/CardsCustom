@@ -7,6 +7,14 @@ function s.initial_effect(c)
 	--Summon with 3 Tribute
 	local e1=aux.AddNormalSummonProcedure(c,true,false,3,3)
 	local e2=aux.AddNormalSetProcedure(c,true,false,3,3)
+	--Race "WARRIOR"
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCode(EFFECT_ADD_RACE)
+	e3:SetValue(RACE_WARRIOR)
+	c:RegisterEffect(e3)
 	--destory
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(4012,1))
@@ -130,7 +138,8 @@ end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,e:GetHandler():GetAttack())
+	--Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,e:GetHandler():GetAttack())
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,4000)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,#g,1-tp,LOCATION_MZONE)
 end
 function s.desop(e,tp,eg,ep,ev,re,r,rp)
