@@ -645,7 +645,7 @@ function s.costfilter(c)
 	return c:IsCode(95286165) and c:IsAbleToGraveAsCost()
 end
 function s.defusioncost(e,tp,eg,ep,ev,re,r,rp,chk)
-		if chk==0 then return Duel.IsExistingMatchingCard(s.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,e:GetHandler()) and Duel.GetFlagEffect(tp,10000012)==1 
+		if chk==0 then return Duel.IsExistingTarget(s.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,e:GetHandler()) and Duel.GetFlagEffect(tp,10000012)==1 
 		and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and e:GetHandler():IsPreviousLocation(LOCATION_GRAVE) and e:GetHandler():GetAttack()>0 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,s.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,1,nil)
@@ -894,7 +894,7 @@ function s.cryomancerfilter(c)
 	return c:IsFaceup() and c:IsCode(23950192)
 end
 function s.cryomancercon(e)
-	return Duel.IsExistingMatchingCard(s.cryomancerfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
+	return Duel.IsExistingTarget(s.cryomancerfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
 end
 function s.cryomancerop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -914,7 +914,7 @@ function s.gorgonfilter(c)
 	return c:IsFaceup() and c:IsCode(43426903)
 end
 function s.gorgoncon(e)
-	return Duel.IsExistingMatchingCard(s.gorgonfilter,tp,0,LOCATION_MZONE,1,nil)
+	return Duel.IsExistingTarget(s.gorgonfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function s.gorgonop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -935,7 +935,8 @@ function s.harpiefilter(e)
 	return c:IsFaceup() and c:IsCode(54415063)
 end
 function s.harpiecon(e)
-	return Duel.IsExistingMatchingCard(s.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
+	--return Duel.IsExistingTarget(s.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
+	return Duel.IsExistingTarget(s.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function s.harpieop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -955,7 +956,7 @@ function s.goraturtlefilter(c)
 	return c:IsFaceup() and c:IsCode(80233946)
 end
 function s.goraturtlecon(e)
-	return Duel.IsExistingMatchingCard(s.goraturtlefilter,0,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
+	return Duel.IsExistingTarget(s.goraturtlefilter,0,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
 end
 function s.goraturtleop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -975,7 +976,7 @@ function s.defenderfilter(c)
 	return c:IsFaceup() and c:IsCode(82498947)
 end
 function s.defendercon(e)
-	return Duel.IsExistingMatchingCard(s.defenderfilter,tp,0,LOCATION_MZONE,1,nil)
+	return Duel.IsExistingTarget(s.defenderfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function s.defenderop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -995,7 +996,7 @@ function s.deltawingfilter(c)
 	return c:IsFaceup() and c:IsCode(100000240)
 end
 function s.deltawingcon(e)
-	return Duel.IsExistingMatchingCard(s.deltawingfilter,tp,0,LOCATION_MZONE,1,nil)
+	return Duel.IsExistingTarget(s.deltawingfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function s.deltawingop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1015,7 +1016,7 @@ function s.thousandeyesfilter(c)
 	return c:IsFaceup() and c:IsCode(63519819)
 end
 function s.thousandeyescon(e)
-	return Duel.IsExistingMatchingCard(s.thousandeyesfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
+	return Duel.IsExistingTarget(s.thousandeyesfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler())
 end
 function s.thousandeyesop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1035,7 +1036,7 @@ function s.levelareafilter(c)
 	return c:IsFaceup() and c:IsCode(3136426)
 end
 function s.levelareacon(e)
-	return Duel.IsExistingMatchingCard(s.levelareafilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
+	return Duel.IsExistingTarget(s.levelareafilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
 end
 function s.levelareaop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1055,7 +1056,7 @@ function s.concealinglightfilter(c)
 	return c:IsFaceup() and c:IsCode(12923641)
 end
 function s.concealinglightcon(e)
-	return Duel.IsExistingMatchingCard(s.concealinglightfilter,tp,0,LOCATION_SZONE,1,nil)
+	return Duel.IsExistingTarget(s.concealinglightfilter,tp,0,LOCATION_SZONE,1,nil)
 end
 function s.concealinglightop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1075,7 +1076,7 @@ function s.spiderslairfilter(c)
 	return c:IsFaceup() and c:IsCode(26640671)
 end
 function s.spiderslaircon(e)
-	return Duel.IsExistingMatchingCard(s.spiderslairfilter,tp,0,LOCATION_SZONE,1,nil)
+	return Duel.IsExistingTarget(s.spiderslairfilter,tp,0,LOCATION_SZONE,1,nil)
 end
 function s.spiderslairop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1095,7 +1096,7 @@ function s.messengerfilter(c)
 	return c:IsFaceup() and c:IsCode(44656491)
 end
 function s.messengercon(e)
-	return Duel.IsExistingMatchingCard(s.messengerfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
+	return Duel.IsExistingTarget(s.messengerfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
 end
 function s.messengerop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1115,7 +1116,7 @@ function s.revealinglightfilter(c)
 	return c:IsFaceup() and c:IsCode(72302403)
 end
 function s.revealinglightcon(e)
-	return Duel.IsExistingMatchingCard(s.revealinglightfilter,tp,0,LOCATION_SZONE,1,nil)
+	return Duel.IsExistingTarget(s.revealinglightfilter,tp,0,LOCATION_SZONE,1,nil)
 end
 function s.revealinglightop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1135,7 +1136,7 @@ function s.burninglightfilter(c)
 	return c:IsFaceup() and c:IsCode(93087299)
 end
 function s.burninglightcon(e)
-	return Duel.IsExistingMatchingCard(s.burninglightfilter,tp,0,LOCATION_SZONE,1,nil)
+	return Duel.IsExistingTarget(s.burninglightfilter,tp,0,LOCATION_SZONE,1,nil)
 end
 function s.burninglightop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1155,7 +1156,7 @@ function s.finalordersfilter(c)
 	return c:IsFaceup() and c:IsCode(52503575)
 end
 function s.finalorderscon(e)
-	return Duel.IsExistingMatchingCard(s.finalordersfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
+	return Duel.IsExistingTarget(s.finalordersfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
 end
 function s.finalordersop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1175,7 +1176,7 @@ function s.morphtronicbindfilter(c)
 	return c:IsFaceup() and c:IsCode(85101228)
 end
 function s.morphtronicbindcon(e)
-	return Duel.IsExistingMatchingCard(s.morphtronicbindfilter,tp,0,LOCATION_SZONE,1,nil)
+	return Duel.IsExistingTarget(s.morphtronicbindfilter,tp,0,LOCATION_SZONE,1,nil)
 end
 function s.morphtronicbindop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1195,7 +1196,7 @@ function s.gravitybindfilter(c)
 	return c:IsFaceup() and c:IsCode(85742772)
 end
 function s.gravitybindcon(e)
-	return Duel.IsExistingMatchingCard(s.gravitybindfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
+	return Duel.IsExistingTarget(s.gravitybindfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
 end
 function s.gravitybindop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
