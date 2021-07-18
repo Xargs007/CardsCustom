@@ -376,7 +376,7 @@ function c911000235.sumnotnegatedop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+EVENT_SUMMON_SUCCESS)
 	c:RegisterEffect(e1)
 end
-function c911000235.triggertg(e,c)--c911000235.triggertg(e,c)
+function c911000235.triggertg(e)--c911000235.triggertg(e,c)
 	local c=e:GetHandler()
 	return (not c:IsRace(RACE_DEVINE))
 end
