@@ -524,7 +524,8 @@ function c911000235.gorgonfilter(c)
 	return c:IsFaceup() and c:IsCode(43426903)
 end
 function c911000235.gorgoncon(e)
-	return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil)
+	--return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil)
+	return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil,nil)
 end
 function c911000235.gorgonop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -544,7 +545,8 @@ function c911000235.harpiefilter(c)
 	return c:IsFaceup() and c:IsCode(54415063)
 end
 function c911000235.harpiecon(e)
-	return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
+	--return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
+	return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil,nil)
 end
 function c911000235.harpieop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -681,7 +683,7 @@ function c911000235.concealinglightimmunefilter(e,te)
 	return te:GetHandler():IsCode(12923641)
 end
 function c911000235.spiderslairfilter(c)
-	return c:IsFaceup() and c:IsCode(26640671)
+	return (c:IsFaceup() and c:IsCode(26640671))
 end
 function c911000235.spiderslaircon(e)
 	return Duel.IsExistingMatchingCard(c911000235.spiderslairfilter,tp,0,LOCATION_SZONE,1,nil)
@@ -698,10 +700,10 @@ function c911000235.spiderslairop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c911000235.spiderslairimmunefilter(e,te)
-	return te:GetHandler():IsCode(26640671)
+	return (te:GetHandler():IsCode(26640671))
 end
 function c911000235.messengerfilter(c)
-	return c:IsFaceup() and c:IsCode(44656491)
+	return (c:IsFaceup() and c:IsCode(44656491))
 end
 function c911000235.messengercon(e)
 	return Duel.IsExistingMatchingCard(c911000235.messengerfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
@@ -721,7 +723,7 @@ function c911000235.messengerimmunefilter(e,te)
 	return te:GetHandler():IsCode(44656491)
 end
 function c911000235.revealinglightfilter(c)
-	return c:IsFaceup() and c:IsCode(72302403)
+	return (c:IsFaceup() and c:IsCode(72302403))
 end
 function c911000235.revealinglightcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.revealinglightfilter,tp,0,LOCATION_SZONE,1,nil)
