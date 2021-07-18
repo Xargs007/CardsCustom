@@ -376,8 +376,9 @@ function c911000235.sumnotnegatedop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+EVENT_SUMMON_SUCCESS)
 	c:RegisterEffect(e1)
 end
-function c911000235.triggertg(e,c)
-	return not c:IsRace(RACE_DEVINE)
+function c911000235.triggertg(e,c)--c911000235.triggertg(e,c)
+	local c=e:GetHandler()
+	return (not c:IsRace(RACE_DEVINE))
 end
 function c911000235.nottributedval(e,re,rp)
 	local c=e:GetHandler()
@@ -521,11 +522,11 @@ function c911000235.cryomancerimmunefilter(e,te)
 	return te:GetHandler():IsCode(23950192)
 end
 function c911000235.gorgonfilter(c)
-	return c:IsFaceup() and c:IsCode(43426903)
+	return (c:IsFaceup() and c:IsCode(43426903))
 end
 function c911000235.gorgoncon(e)
-	--return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil)
-	return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil,nil)
+	return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil)
+	--return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil,nil)
 end
 function c911000235.gorgonop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -542,11 +543,11 @@ function c911000235.gorgonimmunefilter(e,te)
 	return te:GetHandler():IsCode(43426903)
 end
 function c911000235.harpiefilter(c)
-	return c:IsFaceup() and c:IsCode(54415063)
+	return (c:IsFaceup() and c:IsCode(54415063))
 end
 function c911000235.harpiecon(e)
-	--return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
-	return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil,nil)
+	return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
+	--return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil,nil)
 end
 function c911000235.harpieop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -743,7 +744,7 @@ function c911000235.revealinglightimmunefilter(e,te)
 	return te:GetHandler():IsCode(72302403)
 end
 function c911000235.burninglightfilter(c)
-	return c:IsFaceup() and c:IsCode(93087299)
+	return (c:IsFaceup() and c:IsCode(93087299))
 end
 function c911000235.burninglightcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.burninglightfilter,tp,0,LOCATION_SZONE,1,nil)
@@ -763,7 +764,7 @@ function c911000235.burninglightimmunefilter(e,te)
 	return te:GetHandler():IsCode(93087299)
 end
 function c911000235.finalordersfilter(c)
-	return c:IsFaceup() and c:IsCode(52503575)
+	return (c:IsFaceup() and c:IsCode(52503575))
 end
 function c911000235.finalorderscon(e)
 	return Duel.IsExistingMatchingCard(c911000235.finalordersfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
@@ -783,7 +784,7 @@ function c911000235.finalordersimmunefilter(e,te)
 	return te:GetHandler():IsCode(52503575)
 end
 function c911000235.morphtronicbindfilter(c)
-	return c:IsFaceup() and c:IsCode(85101228)
+	return (c:IsFaceup() and c:IsCode(85101228))
 end
 function c911000235.morphtronicbindcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.morphtronicbindfilter,tp,0,LOCATION_SZONE,1,nil)
