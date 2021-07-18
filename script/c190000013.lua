@@ -524,8 +524,10 @@ end
 function s.triggertg(e,c)
 	return not c:IsRace(RACE_DEVINE)
 end
-function s.nottributedval(e,re,rp)
-	local c=e:GetHandler()
+--function s.filter(c,e,tp)
+	--return c:GetLevel()==4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+--end
+function s.nottributedval(c,tp)
  	return not c:IsControler(tp)
 end
 function s.nottributedcon(e,re,rp)
