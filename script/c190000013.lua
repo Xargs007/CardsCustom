@@ -506,8 +506,9 @@ function s.setcon(e,c)
 	if not c then return true end
 	return false
 end
-function s.cannotsettg(e,c)
-return c:IsAttribute(ATTRIBUTE_DEVINE)
+function s.cannotsettg(e,re,rp)
+	local c=e:GetHandler()
+	return c:IsAttribute(ATTRIBUTE_DEVINE)
 end
 function s.sumnotnegatedop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -527,7 +528,7 @@ function s.nottributedval(e,re,rp)
 	local c=e:GetHandler()
  	return not c:IsControler(tp)
 end
-function s.nottributedcon(e,c)
+function s.nottributedcon(e,re,rp)
 	local c=e:GetHandler()
 	return not c:IsControler(tp)
 end
