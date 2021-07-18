@@ -521,8 +521,9 @@ end
 function c911000235.cryomancerimmunefilter(e,te)
 	return te:GetHandler():IsCode(23950192)
 end
-function c911000235.gorgonfilter(c)
-	return (c:IsFaceup() and c:IsCode(43426903))
+--mod
+function c911000235.gorgonfilter(e,te)
+	return (e:GetHandler():IsFaceup() and e:GetHandler():IsCode(43426903))
 end
 function c911000235.gorgoncon(e)
 	return Duel.IsExistingMatchingCard(c911000235.gorgonfilter,tp,0,LOCATION_MZONE,1,nil)
@@ -542,8 +543,9 @@ end
 function c911000235.gorgonimmunefilter(e,te)
 	return te:GetHandler():IsCode(43426903)
 end
-function c911000235.harpiefilter(c)
-	return (c:IsFaceup() and c:IsCode(54415063))
+--mod
+function c911000235.harpiefilter(e,te)
+	return (e:GetHandler():IsFaceup() and e:GetHandler():IsCode(54415063))
 end
 function c911000235.harpiecon(e)
 	return Duel.IsExistingMatchingCard(c911000235.harpiefilter,tp,0,LOCATION_MZONE,1,nil)
@@ -583,8 +585,9 @@ end
 function c911000235.goraturtleimmunefilter(e,te)
 	return te:GetHandler():IsCode(80233946)
 end
-function c911000235.defenderfilter(c)
-	return c:IsFaceup() and c:IsCode(82498947)
+--mod
+function c911000235.defenderfilter(e,te)
+	return e:GetHandler():IsFaceup() and e:GetHandler():IsCode(82498947)
 end
 function c911000235.defendercon(e)
 	return Duel.IsExistingMatchingCard(c911000235.defenderfilter,tp,0,LOCATION_MZONE,1,nil)
@@ -603,9 +606,11 @@ end
 function c911000235.defenderimmunefilter(e,te)
 	return te:GetHandler():IsCode(82498947)
 end
-function c911000235.deltawingfilter(c)
-	return c:IsFaceup() and c:IsCode(100000240)
+--mod
+function c911000235.deltawingfilter(e,te)
+	return e:GetHandler()IsFaceup() and e:GetHandler()IsCode(100000240)
 end
+
 function c911000235.deltawingcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.deltawingfilter,tp,0,LOCATION_MZONE,1,nil)
 end
@@ -663,8 +668,9 @@ end
 function c911000235.levelareaimmunefilter(e,te)
 	return te:GetHandler():IsCode(3136426)
 end
-function c911000235.concealinglightfilter(c)
-	return c:IsFaceup() and c:IsCode(12923641)
+--mod
+function c911000235.concealinglightfilter(e,te)
+	return e:GetHandler():IsFaceup() and e:GetHandler():IsCode(12923641)
 end
 function c911000235.concealinglightcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.concealinglightfilter,tp,0,LOCATION_SZONE,1,nil)
@@ -683,8 +689,8 @@ end
 function c911000235.concealinglightimmunefilter(e,te)
 	return te:GetHandler():IsCode(12923641)
 end
-function c911000235.spiderslairfilter(c)
-	return (c:IsFaceup() and c:IsCode(26640671))
+function c911000235.spiderslairfilter(e,te)
+	return (e:GetHandler():IsFaceup() and e:GetHandler():IsCode(26640671))
 end
 function c911000235.spiderslaircon(e)
 	return Duel.IsExistingMatchingCard(c911000235.spiderslairfilter,tp,0,LOCATION_SZONE,1,nil)
@@ -723,9 +729,11 @@ end
 function c911000235.messengerimmunefilter(e,te)
 	return te:GetHandler():IsCode(44656491)
 end
-function c911000235.revealinglightfilter(c)
-	return (c:IsFaceup() and c:IsCode(72302403))
+--mod
+function c911000235.revealinglightfilter(e,te)
+	return (te:GetHandler():IsFaceup() and te:GetHandler():IsCode(72302403))
 end
+
 function c911000235.revealinglightcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.revealinglightfilter,tp,0,LOCATION_SZONE,1,nil)
 end
@@ -743,9 +751,10 @@ end
 function c911000235.revealinglightimmunefilter(e,te)
 	return te:GetHandler():IsCode(72302403)
 end
-function c911000235.burninglightfilter(c)
-	return (c:IsFaceup() and c:IsCode(93087299))
+function c911000235.burninglightfilter(e,te)
+	return (te:GetHandler():IsFaceup() and te:GetHandler():IsCode(93087299))
 end
+--mod
 function c911000235.burninglightcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.burninglightfilter,tp,0,LOCATION_SZONE,1,nil)
 end
@@ -783,8 +792,9 @@ end
 function c911000235.finalordersimmunefilter(e,te)
 	return te:GetHandler():IsCode(52503575)
 end
-function c911000235.morphtronicbindfilter(c)
-	return (c:IsFaceup() and c:IsCode(85101228))
+--mod
+function c911000235.morphtronicbindfilter(e,te)
+	return (te:GetHandler():IsFaceup() and te:GetHandler():IsCode(85101228))
 end
 function c911000235.morphtronicbindcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.morphtronicbindfilter,tp,0,LOCATION_SZONE,1,nil)
@@ -803,8 +813,9 @@ end
 function c911000235.morphtronicbindimmunefilter(e,te)
 	return te:GetHandler():IsCode(85101228)
 end
-function c911000235.gravitybindfilter(c)
-	return c:IsFaceup() and c:IsCode(85742772)
+--mod
+function c911000235.gravitybindfilter(e,te)
+	return e:GetHandler():IsFaceup() and e:GetHandler():IsCode(85742772)
 end
 function c911000235.gravitybindcon(e)
 	return Duel.IsExistingMatchingCard(c911000235.gravitybindfilter,0,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler())
