@@ -530,8 +530,7 @@ end
 function s.nottributedval(c,tp)
  	return not c:IsControler(tp)
 end
-function s.nottributedcon(e,re,rp)
-	local c=e:GetHandler()
+function s.nottributedcon(c,tp)
 	return not c:IsControler(tp)
 end
 function s.notargetedval(e,te)
