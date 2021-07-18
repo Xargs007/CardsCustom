@@ -1,4 +1,5 @@
 --The Winged Dragon of Ra
+Duel.LoadScript("c421.lua")
 local s,id=GetID()
 function s.initial_effect(c)
 	--Summon with 3 Tribute
