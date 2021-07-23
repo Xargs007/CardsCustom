@@ -5,17 +5,17 @@ function c84327330.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCountLimit(2,84327330)
+	e1:SetCountLimit(2)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
-	e1:SetValue(c84327330.valcon2)
+	e1:SetValue(c84327330.valcon)
 	--e1:SetValue(1)
 	c:RegisterEffect(e1)
 	--battle indestructable
-	local e01=Effect.CreateEffect(c)
-	e01:SetType(EFFECT_TYPE_SINGLE)
-	e01:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
-	e01:SetCountLimit(2,84327330)
-	e01:SetValue(c84327330.valcon)
+	--local e01=Effect.CreateEffect(c)
+	--e01:SetType(EFFECT_TYPE_SINGLE)
+	--e01:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
+	--e01:SetCountLimit(1)
+	--e01:SetValue(c84327330.valcon)
 	--e01:SetValue(1)
 	c:RegisterEffect(e01)
 	--fusion material
@@ -53,7 +53,7 @@ function c84327330.initial_effect(c)
 end
 
 function c84327330.valcon(e, re, r, rp)
-	return bit.band(r, REASON_BATTLE) ~= 0
+	return (bit.band(r, REASON_BATTLE) ~= 0 or bit.band(r, REASON_EFFECT) ~= 0)
 end
 function c84327330.valcon2(e, re, r, rp)
 	return bit.band(r, REASON_EFFECT) ~= 0
