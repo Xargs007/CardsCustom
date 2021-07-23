@@ -40,7 +40,7 @@ function c892521530.thtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c892521530.tgop1(e,tp,eg,ep,ev,re,r,rp)
 	--Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-   	local g=Duel.GetMatchingGroup(c892521530.filter1,tp,0,LOCATION_HAND,nil):RandomSelect(tp,1)
+   	local g=Duel.GetMatchingGroup(c892521530.thfilter1,tp,0,LOCATION_HAND,nil):RandomSelect(tp,1)
 	local tc=g:GetFirst()
 	--local g=Duel.SelectMatchingCard(tp,c892521530.thfilter1,1-tp,LOCATION_HAND,0,1,1,nil)
 	if tc then --g:GetCount()>0 then
