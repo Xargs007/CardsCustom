@@ -17,7 +17,7 @@ function c84327330.initial_effect(c)
 	--e01:SetCountLimit(1)
 	--e01:SetValue(c84327330.valcon)
 	--e01:SetValue(1)
-	c:RegisterEffect(e01)
+	--c:RegisterEffect(e01)
 	--fusion material
 	--local e01=Effect.CreateEffect(c)
 	--e01:SetType(EFFECT_TYPE_SINGLE)
